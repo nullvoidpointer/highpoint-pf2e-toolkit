@@ -3,7 +3,7 @@
     "title": "Highpoint Random Dungeon Crawl Toolkit for Pathfinder 2E",
     "description": "Random Dungeon Crawl Creation Toolkit designed for the Highpoint Discord Community to create Pathfinder 2E random dungeons",
     "author": "JoshGamerZ",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "minimumCoreVersion": "9",
     "compatibleCoreVersion": "9",
     "systems": ["pf2e"],
@@ -39,7 +39,16 @@
             "private": false,
             "entity": "RollTable",
             "type": "RollTable"
+        },
+        {
+            "name": "highpoint-macros",
+            "label": "Highpoint Macros",
+            "path": "./packs/highpoint-macros.db",
+            "private": false,
+            "entity": "Macro",
+            "type": "Macro"
         }
+        
     ],
     "manifest": "https://github.com/nullvoidpointer/highpoint-pf2e-toolkit/releases/latest/download/module.json",
     "download": "https://github.com/nullvoidpointer/highpoint-pf2e-toolkit/releases/latest/download/module.zip",
