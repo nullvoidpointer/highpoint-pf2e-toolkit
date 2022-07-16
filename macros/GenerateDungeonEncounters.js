@@ -25,12 +25,14 @@ async function GenerateDungeon($html){
 
     //define the id of the roll tables to look up into get creatures. 
     const humanoidRolltables = ['HP Humanoid Level -01 - 00','HP Humanoid Level 01','HP Humanoid Level 02','HP Humanoid Level 03','HP Humanoid Level 04','HP Humanoid Level 05','HP Humanoid Level 06','HP Humanoid Level 07','HP Humanoid Level 08-09','HP Humanoid Level 08-09','HP Humanoid Level 10-12','HP Humanoid Level 10-12','HP Humanoid Level 10-12'];
-    const aberrationRolltables = ['HP Aberration Or Fiend 00-02','HP Aberration Or Fiend 00-02','HP Aberration Or Fiend 00-02','HP Aberration Or Fiend 03-05','HP Aberration Or Fiend 03-05','HP Aberration Or Fiend 03-05','HP Aberration Or Fiend 06-08','HP Aberration Or Fiend 06-08','HP Aberration Or Fiend 06-08','HP Aberration Or Fiend 09-11','HP Aberration Or Fiend 09-11','HP Aberration Or Fiend 09-11','HP Aberration Or Fiend 09-11',]
+    const aberrationRolltables = ['HP Aberration Or Fiend Level 00-02','HP Aberration Or Fiend Level 00-02','HP Aberration Or Fiend Level 00-02','HP Aberration Or Fiend Level 03-05','HP Aberration Or Fiend Level 03-05','HP Aberration Or Fiend Level 03-05','HP Aberration Or Fiend Level 06-08','HP Aberration Or Fiend Level 06-08','HP Aberration Or Fiend Level 06-08','HP Aberration Or Fiend Level 09-11','HP Aberration Or Fiend Level 09-11','HP Aberration Or Fiend Level 09-11','HP Aberration Or Fiend Level 09-11',]
     const animalRolltables = ['HP Animals Level -01-00','HP Animals Level 01','HP Animals Level 02','HP Animals Level 03','HP Animals Level 04','HP Animals Level 05','HP Animals Level 06-07','HP Animals Level 06-07','HP Animals Level 08-09','HP Animals Level 08-09','HP Animals Level 10-12','HP Animals Level 10-12','HP Animals Level 10-12'];
     const feyRolltables = ['HP Fey Level 00-02','HP Fey Level 00-02','HP Fey Level 00-02','HP Fey Level 03-05','HP Fey Level 03-05','HP Fey Level 03-05','HP Fey Level 06-08','HP Fey Level 06-08','HP Fey Level 06-08','HP Fey Level 09-11','HP Fey Level 09-11','HP Fey Level 09-11','HP Fey Level 09-11'];
     const plantRolltables = ['HP Plant Fungus Ooze Level -01-00','HP Plant Fungus Ooze Level 01-03','HP Plant Fungus Ooze Level 01-03','HP Plant Fungus Ooze Level 01-03','HP Plant Fungus Ooze Level 04-06','HP Plant Fungus Ooze Level 04-06','HP Plant Fungus Ooze Level 04-06','HP Plant Fungus Ooze Level 07-09','HP Plant Fungus Ooze Level 07-09','HP Plant Fungus Ooze Level 07-09','HP Plant Fungus Ooze Level 10-12','HP Plant Fungus Ooze Level 10-12','HP Plant Fungus Ooze Level 10-12'];
     const undeadRolltables = ['HP Undead Level 00', 'HP Undead Level 01-02','HP Undead Level 01-02','HP Undead Level 03-04','HP Undead Level 03-04','HP Undead Level 05-06','HP Undead Level 05-06','HP Undead Level 07-08','HP Undead Level 07-08','HP Undead Level 09-10','HP Undead Level 09-10','HP Undead Level 11-12','HP Undead Level 11-12'];
-
+    const constructRolltables = ['HP Constructs Golems Level -01-01', 'HP Constructs Golems Level -01-01','HP Constructs Golems Level 02-03', 'HP Constructs Golems Level 02-03', 'HP Constructs Golems Level 04-05', 'HP Constructs Golems Level 04-05', 'HP Constructs Golems Level 06-08', 'HP Constructs Golems Level 06-08', 'HP Constructs Golems Level 06-08', 'HP Constructs Golems Level 09-11', 'HP Constructs Golems Level 09-11', 'HP Constructs Golems Level 09-11', 'HP Constructs Golems Level 09-11'];
+    const elementalRolltables = ['HP Elemental -01-01', 'HP Elemental -01-01', 'HP Elemental 02-03', 'HP Elemental 02-03', 'HP Elemental 04-05', 'HP Elemental 04-05', 'HP Elemental 06-07', 'HP Elemental 06-07', 'HP Elemental 08-09', 'HP Elemental 08-09', 'HP Elemental 10-11', 'HP Elemental 10-11', 'HP Elemental 10-11'];
+    const aquaticRolltables = ['HP Aquatic Level -01-01', 'HP Aquatic Level -01-01', 'HP Aquatic Level 02-03', 'HP Aquatic Level 02-03', 'HP Aquatic Level 04-05', 'HP Aquatic Level 04-05', 'HP Aquatic Level 06-07', 'HP Aquatic Level 06-07', 'HP Aquatic Level 08-09', 'HP Aquatic Level 08-09', 'HP Aquatic Level 10-12',  'HP Aquatic Level 10-12',  'HP Aquatic Level 10-12'];
 
     var selectedCreatureRollTables = humanoidRolltables;
     var creaturesLevelsArray = [];
@@ -40,7 +42,7 @@ async function GenerateDungeon($html){
     if(etheme == "any")
     {
         //randomly select a theme
-        var randomselectedtheme = Math.floor(Math.random()*6);
+        var randomselectedtheme = Math.floor(Math.random()*9);
         if(randomselectedtheme == 1){
             etheme = "aberration";
         }else if(randomselectedtheme == 2){
@@ -51,10 +53,13 @@ async function GenerateDungeon($html){
             etheme = "plant";
         }else if(randomselectedtheme == 5){
             etheme = "undead";
+        }else if(randomselectedtheme == 6){
+            etheme = "construct";
+        }else if(randomselectedtheme == 7){
+            etheme = "elemental";
         }else{
             etheme = "humanoid";
         }
-
     }
     
     //now set the rolltable look up based on the theme
@@ -81,6 +86,18 @@ async function GenerateDungeon($html){
     else if(etheme == "undead")
     {
         selectedCreatureRollTables = undeadRolltables;
+    }
+    else if( etheme == "construct")
+    {
+        selectedCreatureRollTables = constructRolltables;
+    }
+    else if(etheme == "elemental")
+    {
+        selectedCreatureRollTables = elementalRolltables;
+    }
+    else if(etheme == "aquatic")
+    {
+        selectedCreatureRollTables = aquaticRolltables;
     }
     
     
@@ -181,7 +198,11 @@ async function GenerateDungeon($html){
                         <option>fey</option>
                         <option>plant</option>
                         <option>undead</option>
+                        <option>construct</option>
+                        <option>elemental</option>
+                        <option>aquatic</option>
                     </select>
+                    <i> Aquatic not included in "any" option.</i>
                 </div>                
             </form>
         `
