@@ -3,7 +3,7 @@
     "title": "Highpoint Random Dungeon Crawl Toolkit for Pathfinder 2E",
     "description": "Random Dungeon Crawl Creation Toolkit designed for the Highpoint Discord Community to create Pathfinder 2E random dungeons",
     "author": "JoshGamerZ",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "minimumCoreVersion": "9",
     "compatibleCoreVersion": "9",
     "systems": ["pf2e"],

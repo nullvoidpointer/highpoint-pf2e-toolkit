@@ -13,3 +13,5 @@ Intended instructions for use, but really do whatever with what is provided:
 Changelog: 
 v0.0.1 - initial testing of rolltables referencing rolltables within module and try out of including maps in module with reference to images in module. 
 v0.0.2 - Initial draft of a random encounter generator based on the created rolltables for the module. Added a few more creature tables for plants. 
+v0.0.3 - Fixed bug with seeing aberation theme in macros. Added additional themes and roll tables for creatures for aquatic, constructs and elementals. 
+v0.0.4 - Fixed bug where the macro was not updated in the compendium. 
